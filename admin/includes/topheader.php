@@ -1,5 +1,4 @@
             <div class="topbar">
-
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <a href="index.php" class="logo"><span>ROZGHAR<span>PK</span></span><i class="mdi mdi-layers"></i></a>

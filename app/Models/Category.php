@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
     use HasFactory;
+    
+    protected $guarded = [];
 
     protected static function booted()
     {
@@ -34,6 +36,12 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+
+    public function parents()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
 
     public function scopeActive($query)
     {
