@@ -17,7 +17,7 @@
        </aside>
        <aside class="single_sidebar_widget popular_post_widget">
           <h3 class="widget_title">Recent Post</h3>
-          @foreach ($recentPosts as $lPost)
+         @foreach ($recentPosts as $lPost)
             <div class="media post_item">
                 <img src="{{ asset($lPost->image) }}" width="150px" alt="{{ $lPost->title }}">
                 <div class="media-body">

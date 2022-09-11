@@ -28,7 +28,7 @@
     <div class="col-md-12">
         <div class="demo-box m-t-20">
             <div class="m-b-30">
-                <a href="{{route('admin.categories.create')}}">
+                <a href="{{route('admin.blog-categories.create')}}">
                     <button id="addToTable" class="btn btn-success waves-effect waves-light">Add <i class="mdi mdi-plus-circle-outline"></i></button>
                 </a>
             </div>
@@ -55,8 +55,8 @@
                                 </button>
                             </td>
                             <td>
-                                <a href="{{ route('admin.categories.edit', $category->id) }}"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a>
-                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
+                                <a href="{{ route('admin.blog-categories.edit', $category->id) }}"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a>
+                                <form action="{{ route('admin.blog-categories.destroy', $category->id) }}" method="POST">
                                     @method("DELETE")
                                     @csrf
                                     <button><i class="fa fa-trash-o" style="color: #f05050"></i></button>

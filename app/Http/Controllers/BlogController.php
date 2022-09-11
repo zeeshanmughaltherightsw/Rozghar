@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use Illuminate\Support\Arr;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -37,15 +38,15 @@ class BlogController extends Controller
 
     public function blogCategory($slug)
     {
-        dd('dd');
         $category = BlogCategory::where('slug', $slug)->active()->firstOrFail();
+        $ids = Arr::flatten([$category->id , $category->subBlogCategory->pluck('id')->toArray()]);
+    
         $data = [
             'page_title' => ' Archives',
             'category' => $category,
-            'blogs' => $category->blogs()->paginate(8),
-            'recentPosts' => BlogPost::orderByDesc('id')->active()->limit(7)->get()
+            'blogs' => BlogPost::whereIn('blog_category_id', $ids)->paginate(7),
+            'recentPosts' => BlogPost::whereIn('blog_category_id', $ids)->limit(7)->get(),
         ];
-
         return view('blogs.categories', $data);
     }
 

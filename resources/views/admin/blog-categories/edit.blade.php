@@ -28,7 +28,7 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="p-6">
             <div class="">
-                <form action="{{route('admin.categories.update', $category->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.blog-categories.update', $category->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="id" value="{{$category->id}}" />
@@ -43,7 +43,7 @@
                                 <label for="exampleInputEmail1">Category</label>
                                 <select class="form-control" name="parent_id" id="parent_id">
                                     <option value="" selected disabled>Select Category</option>
-                                    @foreach ($categories as $cat)
+                                    @foreach ($blogCategories as $cat)
                                         @if($cat->id != $category->id)
                                             <option value="{{$cat->id}}" @if ($category->parents && $category->parents->id == $cat->id) selected @endif>{{$cat->name}}</option>
                                         @endif

@@ -14,7 +14,7 @@
                     <div class="single_jobs white-bg d-flex justify-content-between">
                         <div class="jobs_left d-flex align-items-center">
                             <div class="thumb">
-                                <img src="img/svg_icon/1.svg" alt="">
+                                <img src="{{asset($post->image)}}" width="50px" height="50px" alt="">
                             </div>
                             <div class="jobs_conetent">
                                 <a href="#">

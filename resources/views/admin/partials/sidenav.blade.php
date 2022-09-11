@@ -17,7 +17,10 @@
                     <a href="{{route('admin.posts.index')}}" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Jobs </span> </a>
                 </li>
                 <li class="has_sub">
-                    <a href="{{route('admin.posts.index')}}" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Blogs </span> </a>
+                    <a href="{{route('admin.blogs.index')}}" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Blogs </span> </a>
+                </li>
+                <li class="has_sub">
+                    <a href="{{route('admin.blog-categories.index')}}" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Blog Categories </span> </a>
                 </li>
 
                 <li class="has_sub">
