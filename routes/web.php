@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class , 'index'])->name('h
 Route::get('/detail/{slug}', [App\Http\Controllers\HomeController::class , 'postDetail'])->name('post.detail');
 Route::get('/search/{keyword?}', [App\Http\Controllers\HomeController::class , 'search'])->name('search');
 Route::get('/cateogries', [App\Http\Controllers\CategoryController::class , 'index']);
+Route::prefix('blogs')->name('blog.')->controller(BlogController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('{slug}', 'blogPost')->name('post');
+    Route::get('categories/{slug}', 'blogCategory')->name('category');
+    Route::get('post/search', 'search')->name('search');
+});
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

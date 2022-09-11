@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\BlogCategory;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -33,6 +34,12 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::with('subCategory')->active()->parent()->get();
             View::share(compact('categories'));
         }
-        
+
+        if(Schema::hasTable('blog_categories')){
+            // Blog Categories for Menu bar
+            $mbc = BlogCategory::with('subBlogCategory')->active()->parent()->get();
+            View::share(compact('mbc'));
+        }
+
     }
 }

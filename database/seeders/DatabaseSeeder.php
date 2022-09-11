@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlogPost;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Post;
@@ -25,11 +26,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            BlogCategorySeeder::class,
             UserSeeder::class,
             CategorySeeder::class,
             CitySeeder::class,
         ]);
 
         Post::factory(50)->create();
+        BlogPost::factory(50)->create();
     }
 }
