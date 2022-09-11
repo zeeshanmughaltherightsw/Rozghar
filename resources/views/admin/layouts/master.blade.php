@@ -4,7 +4,7 @@
 <head>
 
     <title>{{ $page_title }} | RozgharPk</title>
-
+    <meta charset="utf-8">
     <!-- App css -->
     <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/core.css') }}" rel="stylesheet" type="text/css" />
