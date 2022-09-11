@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,10 +27,16 @@ class HomeController extends Controller
                     });
                 }
         })->active()->get();
+        $govtJobs = Category::whereSlug('govt-jobs')->first();
+        $ids = Arr::flatten([$govtJobs->id, $govtJobs->subCategory->pluck('id')->toArray()]);
+        
+        $privateJobs = Category::whereSlug('private-jobs')->first();
+        $idss = Arr::flatten([$privateJobs->id, $privateJobs->subCategory->pluck('id')->toArray()]);
+        
         $data = [
             'page_title' => 'Home',
-            'govtJobs' => $posts->where('category_id', 1)->take(8) ,
-            'privateJobs' => $posts->where('category_id', 2)->take(8),
+            'govtJobs' => $posts->whereIn('category_id', $ids)->take(8) ,
+            'privateJobs' => $posts->where('category_id', $idss)->take(8),
             'posts' => $posts,
             'locations' => City::where('status', 'active')->get(),
         ];
@@ -54,7 +62,9 @@ class HomeController extends Controller
                         $query->where('city_id', request()->input('location'));
                     }
                     if(request()->input('category_id')){
-                        $query->where('category_id', request()->input('category_id'));
+                        $categories = Category::find(request()->input('category_id'));
+                        $ids = Arr::flatten([$categories->id, $categories->subCategory->pluck('id')->toArray()]);
+                        $query->whereIn('category_id', $ids);
                     }
                     if(request()->input('category') || $category){
                         $query->whereHas('category', function($subQuery) use ($category){

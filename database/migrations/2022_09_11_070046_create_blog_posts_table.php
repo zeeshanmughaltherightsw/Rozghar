@@ -20,7 +20,7 @@ class CreateBlogPostsTable extends Migration
             $table->string('slug')->nullable();
             $table->text('short_description')->nullable();
             $table->longText('description')->nullable();
-            $table->string('image',500)->nullable();
+            $table->string('image', 500)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
 

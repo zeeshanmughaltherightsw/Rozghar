@@ -10,6 +10,7 @@ class BlogCategory extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     protected static function booted()
     {
         parent::boot();
@@ -33,6 +34,10 @@ class BlogCategory extends Model
     public function subBlogCategory()
     {
         return $this->hasMany(BlogCategory::class, 'parent_id');
+    }
+    public function parents()
+    {
+        return $this->belongsTo(BlogCategory::class, 'parent_id');
     }
 
     public function blogs()

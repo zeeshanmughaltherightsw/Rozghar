@@ -29,12 +29,14 @@ Route::prefix('blogs')->name('blog.')->controller(BlogController::class)->group(
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function(){
-    Route::name('admin.')->group(function(){
+    Route::name('admin.')->middleware('auth')->group(function(){
         Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('posts', App\Http\Controllers\Admin\PostsController::class);
         Route::resource('categories', App\Http\Controllers\Admin\CategoriesController::class);
-        Route::get('getSubcategories/{categories}', [App\Http\Controllers\Admin\CategoriesController::class, 'getSubcategories'])->name('sub-cat');
+        Route::resource('blog-categories', App\Http\Controllers\Admin\BlogCategoryController::class);
         Route::resource('blogs', App\Http\Controllers\Admin\BlogsController::class);
+        Route::get('getSubcategories/{categories}', [App\Http\Controllers\Admin\CategoriesController::class, 'getSubcategories'])->name('sub-cat');
+        Route::get('getSubBlogCategories/{categories}', [App\Http\Controllers\Admin\BlogCategoryController::class, 'getSubBlogCategories'])->name('sub-blog-cat');
     });
     Auth::routes();
 });

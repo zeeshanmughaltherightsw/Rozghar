@@ -22,7 +22,7 @@
                                 <a class="d-inline-block" href="{{ route('blog.post', $post->slug) }}">
                                     <h2>{{ $post->title }}</h2>
                                 </a>
-                                <p>{{ substr($post->short_description,0, 300) }}</p>
+                                <p>{!! substr($post->short_description,0, 300) !!}</p>
                                 <ul class="blog-info-link">
                                     <li><a href="#"><i class="fa fa-user"></i> {{ $post->blogCategory->name }}</a></li>
                                     <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>

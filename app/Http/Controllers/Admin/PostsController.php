@@ -53,11 +53,14 @@ class PostsController extends Controller
     {
         try{
             DB::beginTransaction();
+            $data = $request->except('category');
             if($request->has('image')){
-                $filename = Carbon::now()->toDateTimeLocalString();
-                $request->file('image')->storeAs(storage_path('app/public/posts'), $filename);
+                $file= $request->file('image');
+                $filename= date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('storage/posts'), $filename);
+                $data['image'] = 'storage/posts/' . $filename; 
             }
-            Post::create($request->except('category'));
+            Post::create($data);
             DB::commit();
             $notify[] = ['success', 'Post Created Successfully'];
             return redirect()->route('admin.posts.index')->withNotify($notify);
@@ -107,17 +110,14 @@ class PostsController extends Controller
     {
         try{
             DB::beginTransaction();
+            $data = $request->except('category');
             if($request->has('image')){
-                $filename = Carbon::now()->toDateTimeLocalString(). '.jpg';
-                // $request->file('image')->storeAs('public/posts/', $filename);
-                if (!Storage::exists('posts')) {
-                    Storage::makeDirectory('posts');
-                }
-                Storage::disk('public')->put("posts/$filename", $request->file('image'), 'public');
-                // $request->file('image')->move(asset('storage/posts'.'/'.$filename . '.jpg'));
-                // Storage::disk('public')->put('public/posts'.'/'.$filename, $request->file('image'), 'public');
+                $file= $request->file('image');
+                $filename= date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('storage/posts'), $filename);
+                $data['image'] = 'storage/posts/' . $filename; 
             }
-            $post->update($request->except('category'));
+            $post->update($data);
             DB::commit();
             $notify[] = ['success', 'Post Updated Successfully'];
             return redirect()->route('admin.posts.index')->withNotify($notify);

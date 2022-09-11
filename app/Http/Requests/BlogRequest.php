@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class BlogRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,15 +29,9 @@ class PostRequest extends FormRequest
                 $data = [
                     'title' => 'required |unique:posts',
                     'category' => 'required',
-                    'category_id' => 'required',
-                    'salary' => 'required',
-                    'vacancy' => 'required',
-                    'city_id' => 'required',
-                    'education' => 'required',
-                    'last_date' => 'required',
-                    'note' => 'required',
+                    'blog_category_id' => 'required',
+                    'short_description' => 'required',
                     'description' => 'required',
-                    'link' => 'required | url',
                     'image' => 'required|image|mimes:jpeg,png,jpg,gif'
                 ];
                 break;
@@ -45,15 +39,9 @@ class PostRequest extends FormRequest
                 $data = [
                     'title' => 'required |unique:posts'. request()->id,
                     'category' => 'required',
-                    'category_id' => 'required',
-                    'salary' => 'required',
-                    'vacancy' => 'required',
-                    'city_id' => 'required',
-                    'education' => 'required',
-                    'last_date' => 'required',
-                    'note' => 'required',
+                    'blog_category_id' => 'required',
+                    'short_description' => 'required',
                     'description' => 'required',
-                    'link' => 'required | url',
                     'image' => '|image|mimes:jpeg,png,jpg,gif'
                 ];
         }

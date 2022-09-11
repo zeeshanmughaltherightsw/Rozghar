@@ -66,8 +66,9 @@
                                     <div class="jobs_left d-flex align-items-center">
                                         @if($post->image)
                                             <div class="thumb">
-                                                <img src="{{asset($post->image)}}" alt="{{$post->title}}">
+                                                <img width="50px" height="50px" src="{{asset($post->image)}}" alt="{{$post->title}}">
                                             </div>
+                                            
                                         @endif
                                         <div class="jobs_conetent">
                                             <a href="job_details.html"><h4>{{$post->title}}</h4></a>

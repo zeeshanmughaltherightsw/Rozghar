@@ -26,13 +26,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            BlogCategorySeeder::class,
+            // BlogCategorySeeder::class,
             UserSeeder::class,
-            CategorySeeder::class,
+            // CategorySeeder::class,
             CitySeeder::class,
         ]);
 
-        Post::factory(50)->create();
-        BlogPost::factory(50)->create();
+        // Post::factory(50)->create();
+        // BlogPost::factory(50)->create();
     }
 }
