@@ -22,17 +22,20 @@
                                                 @if(count($category->subCategory) > 0)
                                                     <ul class="submenu">
                                                     @foreach ($category->subCategory as $subCategory)
-                                                        <li><a href="{{ route('search', $subCategory->slug) }}">{{ $subCategory->name }}</a></li>    
+                                                        <li><a href="{{ route('search', $subCategory->slug) }}">{{ $subCategory->name }}</a></li>
                                                     @endforeach
                                                     </ul>
                                                 @endif
                                                 </li>
                                             @endforeach
                                         @endif
-                                        <li><a href="#">blogs <i class="ti-angle-down"></i></a>
+                                        <li><a href="{{ route('blog.index') }}">{{ __('Blogs') }} <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="blog.php">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
+                                                @foreach ($mbc as $cat)
+                                                    <li>
+                                                        <a href="{{ route('blog.category', $cat->slug) }}">{{ $cat->name }}</a>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact</a></li>
