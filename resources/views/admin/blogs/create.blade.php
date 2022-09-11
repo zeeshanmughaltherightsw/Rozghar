@@ -110,7 +110,8 @@
         });
     });
 </script>
-<script src="{{ asset('admin/assets/js/ckeditor.js') }}"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+
 <script>
     ClassicEditor
         .create( document.querySelector('#description') )
