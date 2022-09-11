@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ $page_title }} | Rozgharpk</title>
-    <meta name="description" content="">
+    <meta name="description" content="{{isset($meta) ? $meta['description'] : ''}}">
+    <meta name="keywords" content="{{isset($meta) ? $meta['keywords'] : ''}}">
+    <meta name="author" content="{{isset($meta) ? $meta['author'] : ''}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
